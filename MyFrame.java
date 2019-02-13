@@ -11,25 +11,66 @@ public class MyFrame extends JFrame implements KeyListener{
 	}
 
 	public void keyPressed(KeyEvent e){
+		boolean Up = false;
+		boolean Down = false;
+		boolean Right = false;
+		boolean Left = false;
+	
 		if(e.getKeyCode() == KeyEvent.VK_UP){
-			drawing.moveUp();
-			System.out.println("pos: " + drawing.x + ", " + drawing.y);
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-			drawing.moveRight();
-			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+			Up = true;
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_DOWN){
-			drawing.moveDown();
-			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+			Down = true;
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+			Right = true;
 		}
 		else if(e.getKeyCode() == KeyEvent.VK_LEFT){
-			drawing.moveLeft();
+			Left = true;
+		}
+		
+		
+		/*if(Up && Right){
+			drawing.moveUpRight();
 			System.out.println("pos: " + drawing.x + ", " + drawing.y);
 		}
+		else if(Up && Left){
+			drawing.moveUpLeft();
+			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		}
+		else if(Down && Right){
+			drawing.moveDownRight();
+			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		}
+		else if(Down && Left){
+			drawing.moveDownLeft();
+			System.out.println("pos: " + drawing.x + ", " + drawing.y);
+		}*/
+		if(Right){
+			drawing.hero1.moveRight();
+			System.out.println("pos: " + drawing.hero1.x + ", " + drawing.hero1.y);
+		}
+		
+		else if(Left){
+			drawing.hero1.moveLeft();;
+			System.out.println("pos: " + drawing.hero1.x + ", " + drawing.hero1.y);
+		}
+		else if(Down){
+			drawing.hero1.moveDown();
+			System.out.println("pos: " + drawing.hero1.x + ", " + drawing.hero1.y);
+		}
+		else if(Up){
+			drawing.hero1.moveUp();
+			System.out.println("pos: " + drawing.hero1.x + ", " + drawing.hero1.y);
+		}
+		
 		else if(e.getKeyCode() == KeyEvent.VK_SPACE){
-			drawing.attack();
+			drawing.hero1.attack();
 			System.out.println("attack");
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_S){
+			drawing.spawnEnemy();
 		}
 	}
 
@@ -49,5 +90,5 @@ public class MyFrame extends JFrame implements KeyListener{
 		gameFrame.getContentPane().add(gameFrame.drawing);
 		gameFrame.addKeyListener(gameFrame);
 		System.out.println("practical programming");
-	}
+		}
 }
